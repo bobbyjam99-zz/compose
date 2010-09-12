@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <title>CoMpose: <%= action_name %> <%= controller_name %></title>
+    <%= stylesheet_link_tag 'compose' %>
+    <%= javascript_include_tag :defaults %>
+  </head>
+  <body>
+    <table width="100%" height="100%">
+      <tr>
+        <td class="topMenu" align="center" valign="top" height="100">
+          <h2>CoMpoSe</h2>
+          <h3>管理機能</h3>
+          <p align="center">
+            <%= link_to 'ユーザー', users_path %>
+            <%= link_to 'スタイル', styles_path %>
+            <%= link_to 'レイアウト', layouts_path %>
+            <%= link_to 'パス', paths_path %>
+            <%= link_to '記事', articles_path %>
+          </p>
+          <% if @loggedin %>
+            <p align="right"><%= link_to 'ログアウト', :controller => 'auth', :action => 'logout' %></p>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <td class="main" valing="top" align="center">
+          <p style="color: green"><%= flash[:notice] %></p>
+          <p style="color: red"><b><%= flash[:error] %></b></p>
+
+          <%= yield %>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

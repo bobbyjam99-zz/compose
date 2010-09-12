@@ -1,0 +1,40 @@
+<h1>ユーザ管理</h1>
+
+<table width="400" class="centerd">
+  <tr>
+    <th align="left" width="100">Username</th>
+    <th align="right" width="100">Password</th>
+    <th align="right" width="50"></th>
+    <th align="right" width="150"></th>
+  </tr>
+
+  <% @users.each do |user| %>
+    <tr>
+      <td align="left"><%=h user.username %></td>
+      <td aligh="right"><%=h user.password.gsub(/./, '*') %></td>
+      <td>&nbsp;</td>
+      <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= will_paginate(@users) %>
+
+<br />
+
+<h1>新しいユーザーを登録</h1>
+
+<% form_for(@user) do |f| %>
+  <% f.error_messages %>
+  <p>
+    <%= f.label :username %><br/>
+    <%= f.text_field :username %>
+  </p>
+  <p>
+    <%= f.label :password %><br/>
+    <%= f.text_field :password %>
+  </p>
+  <p>
+    <%= f.submit '登録' %>
+  </p>
+<% end %>

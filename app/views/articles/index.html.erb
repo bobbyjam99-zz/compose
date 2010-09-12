@@ -1,0 +1,31 @@
+<h1>記事の管理</h1>
+
+<table width="800" class="centerd">
+  <tr>
+    <th width="50" align="left">ID</th>
+    <th width="200" align="left">Subject</th>
+    <th width="150" align="left">Name</th>
+    <th width="100" align="right">Content type</th>
+    <th width="100" align="right">Layout</th>
+    <th width="100" align="right">Path</th>
+    <th width="50" align="right"></th>
+    <th width="50" align="right"></th>
+  </tr>
+
+<% @articles.each do |article| %>
+  <tr>
+    <td width="50" align="left"><%=h article.id %></td>
+    <td width="200" align="left"><%= link_to h(article.subject), edit_article_path(article) %></td>
+    <td width="150" align="left"><%=h article.name %></td>
+    <td width="100" align="right"><%= h(article.content_type.name) %></td>
+    <td width="100" align="right"><%= h(article.layout.name) if article.layout %></td>
+    <td width="100" align="right"><%= h(article.path.name) %></td>
+    <td width="50" align="right">&nbsp;</td>
+    <td width="50" align="right"><%= link_to 'Destroy', article, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to '新しい記事を作成する', new_article_path %>

@@ -1,0 +1,23 @@
+<h1>パスの管理</h1>
+
+<table width="400" class="centered">
+  <tr>
+    <th width="150" align="left">Name</th>
+    <th width="150" align="rignt">Path</th>
+    <th width="50"></th>
+    <th width="50ß"></th>
+  </tr>
+
+<% @paths.each do |path| %>
+  <tr>
+    <td><%=h path.path %></td>
+    <td><%=h path.layout_id %></td>
+    <td><%=h path.name %></td>
+    <td><%= link_to 'Destroy', path, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New path', new_path_path %>

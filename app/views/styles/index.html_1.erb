@@ -1,0 +1,21 @@
+<h1>スタイル管理</h1>
+
+<table width="500" class="centered">
+  <tr>
+    <th width="200">Name</th>
+    <th width="150">type</th>
+    <th width="150"></th>
+  </tr>
+
+<% @styles.each do |style| %>
+  <tr>
+    <td align="left"><%= link_to h(style.name), edit_style_path(style) %></td>
+    <td align="right"><%=h style.style_type.name %></td>
+    <td align="right"><%= link_to 'Destroy', style, :confirm => 'Are you sure?', :method => :delete, style.stylings.empty? %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'スタイルを追加する', styles_path, :method => :post %>

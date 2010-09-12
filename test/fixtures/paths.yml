@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  path: MyString
+  layout_id: 1
+  name: MyString
+
+two:
+  path: MyString
+  layout_id: 1
+  name: MyString
